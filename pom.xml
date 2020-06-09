@@ -35,6 +35,15 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!--Insert dependencies init-->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
+		<!--Insert dependencies end-->
 	</dependencies>
 
 	<build>
