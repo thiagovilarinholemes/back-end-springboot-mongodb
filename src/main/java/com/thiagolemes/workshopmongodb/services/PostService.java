@@ -1,0 +1,23 @@
+package com.thiagolemes.workshopmongodb.services;
+
+import com.thiagolemes.workshopmongodb.domain.Post;
+import com.thiagolemes.workshopmongodb.repositories.PostRepository;
+import com.thiagolemes.workshopmongodb.services.exception.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+public class PostService {
+
+    @Autowired
+    private PostRepository repository;
+
+    public Post findById(String id) {
+        Optional<Post> obj = repository.findById(id);
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+    }
+
+}
+
