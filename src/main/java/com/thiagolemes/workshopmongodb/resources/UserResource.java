@@ -1,5 +1,6 @@
 package com.thiagolemes.workshopmongodb.resources;
 
+import com.thiagolemes.workshopmongodb.domain.Post;
 import com.thiagolemes.workshopmongodb.domain.User;
 import com.thiagolemes.workshopmongodb.dto.UserDTO;
 import com.thiagolemes.workshopmongodb.services.UserService;
@@ -53,5 +54,12 @@ public class UserResource {
         user.setId(id);
         user = service.update(user);
         return ResponseEntity.noContent().build(); // Retorna um código 204, não retorna nada, operação realizada com sucesso
+    }
+
+    // Carregando os post relacionados com o usuário
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 }
