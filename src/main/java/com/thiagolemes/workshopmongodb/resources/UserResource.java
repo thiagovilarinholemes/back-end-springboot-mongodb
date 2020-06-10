@@ -40,4 +40,10 @@ public class UserResource {
                 .path("/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).build(); // Retorna uma resposta vazia com o código 201 com o cabeçalho com o endereço do novo objeto
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        service.delete(id);
+        return ResponseEntity.noContent().build(); // Retorna um código 204, não retorna nada, operação realizada com sucesso
+    }
 }
